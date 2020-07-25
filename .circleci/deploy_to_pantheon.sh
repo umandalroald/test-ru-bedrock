@@ -35,15 +35,9 @@ ln -s ../../../files web/app/uploads
 # Install Terminus globally
 composer global require pantheon-systems/terminus:^2.0
 
-# Check where Terminus is installed
-composer update
-
 # Install Terminus plugins
 mkdir -p $HOME/.terminus/plugins
-composer create-project -n -d $HOME/.terminus/plugins pantheon-systems/terminus-build-tools-plugin:^2.0.0-beta18
-
-# Check installed Terminus plugins
-composer update $HOME/.terminus/plugins
+composer create-project -n -d $HOME/.terminus/plugins pantheon-systems/terminus-build-tools-plugin:^2.0.0-beta13
 
 # Authenticate with Terminus
 terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
