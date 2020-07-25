@@ -39,8 +39,6 @@ composer global require pantheon-systems/terminus:2.0
 mkdir -p $HOME/.terminus/plugins
 composer create-project -n -d $HOME/.terminus/plugins pantheon-systems/terminus-build-tools-plugin:2.0.0-beta13
 
-# composer update phpspec/prophecy:^1.10.3 -n -d $HOME/.terminus/plugins/terminus-build-tools-plugin
-
 # Authenticate with Terminus
 terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
 
