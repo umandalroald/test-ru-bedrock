@@ -47,14 +47,14 @@ terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
 # Wake up the main development environment
 terminus env:wake -n "$TERMINUS_SITE.dev"
 
-# Push code to Pantheon
-# if [[ ${CIRCLE_BRANCH} == "master" ]]; then
-#     terminus build:env:push -n "$TERMINUS_SITE.dev"
-# elif [[ ! -z "$CIRCLE_PULL_REQUEST" ]]; then
-#     terminus build:env:create -n "$TERMINUS_SITE.dev" "pr-${CIRCLE_PULL_REQUEST##*/}"
-# fi
+Push code to Pantheon
+if [[ ${CIRCLE_BRANCH} == "master" ]]; then
+    terminus build:env:push -n "$TERMINUS_SITE.dev"
+elif [[ ! -z "$CIRCLE_PULL_REQUEST" ]]; then
+    terminus build:env:create -n "$TERMINUS_SITE.dev" "pr-${CIRCLE_PULL_REQUEST##*/}"
+fi
 
-# # Clean up unused PR environments (if GITHUB_TOKEN is set)
-# if [[ ! -z "$GITHUB_TOKEN" ]]; then
-#     terminus build:env:delete:pr -n "$TERMINUS_SITE" --yes
-# fi
+# Clean up unused PR environments (if GITHUB_TOKEN is set)
+if [[ ! -z "$GITHUB_TOKEN" ]]; then
+    terminus build:env:delete:pr -n "$TERMINUS_SITE" --yes
+fi
